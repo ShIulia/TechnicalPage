@@ -1,0 +1,305 @@
+<html>
+ <style>
+   html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #FBFFFE;
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #001514;
+  scroll-behavior: smooth;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  min-width: 290px;
+  height: 100%;
+  background-color:#001514;
+  color:#FBFFFE;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Making a collapsible navbar */
+
+.navbar-container label, #navbar-collapse {
+  display: none;
+  z-index: 2;
+}
+
+.navbar-container label {
+  cursor: pointer;
+}
+
+#navbar header {
+  font-size: 25px;
+  margin: 30px 30px 0;
+}
+
+#navbar ul {
+  list-style: none;
+  margin-top: 25px;
+  padding: 0;
+}
+
+#navbar li {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #A3320B 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.2s ease-out;
+}
+
+#navbar li:hover {
+  background-position: left bottom;
+}
+
+.nav-link {
+  list-style: none;
+  color: #FBFFFE;
+  text-decoration: none;
+  display: block;
+  padding: 15px 30px;
+}
+
+#main-doc {
+  position: absolute;
+  margin-left: 310px;
+  padding: 20px 40px 40px 30px;
+  }
+
+main header {
+  font-size: 25px;
+  color: #A3320B;
+  margin-top: 0.8em;
+  padding-top: 0.8em;
+}
+
+.main-section p {
+  margin: 1em 1em 0 0;
+}
+
+.main-section p:first-of-type {
+  margin-top: 1.4em;
+}
+
+pre {
+  white-space: normal;
+}
+
+code {
+  display: block;
+  white-space: pre-line;
+  text-align: left;
+  line-height: 1.8;
+  margin-left: 2em;
+}
+
+.inline-code {
+  display: inline;
+  white-space: normal;
+  margin-left: 0;
+}
+
+.definition {
+  font-weight: 700;
+}
+
+.main-section ul {
+  list-style: circle;
+}
+
+.main-section li {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 850px) {
+  #navbar {
+    width: 220px;
+    min-width: 220px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  #navbar header {
+    font-size: 20px;
+    margin: 30px 30px 0;
+  }
+
+  #main-doc {
+    position: absolute;
+    margin-left: 220px;
+    padding: 20px 40px 40px 30px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  .label-bg {
+    background-color: rgba(251, 255, 254, 0.7);
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+  }
+
+  .navbar-container label {
+    display: inline-block;
+    color: #6B0504;
+    font-size: 24px;
+    z-index: 3;
+    opacity: 1;
+    margin: 30px auto 30px 40px;
+  }
+
+  #navbar {
+    max-height: 0;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+  }
+
+  #main-doc {
+    padding: 0;
+    margin: 50px 40px 30px;
+    min-width: 300px;
+  }
+
+  input:checked ~ #navbar {
+    max-height: 100%;
+  }
+
+  #navbar header {
+    margin: 100px 30px 0 40px;
+  }
+
+  .nav-link {
+    padding-left: 40px;
+  }
+
+  input:checked + .label-bg {
+    background-color: rgba(251, 255, 254, 0);
+  }
+
+  input:checked + .label-bg label {
+    color: #FBFFFE;
+  }
+  
+}
+
+script {
+  z-index: 5;
+}
+  </style>
+<body>
+  <div class="navbar-container">
+    <input type="checkbox" id="navbar-collapse">
+    <div class="label-bg">
+      <label for="navbar-collapse"><i class="fas fa-bars"></i></label>
+    </div>
+    <nav id="navbar">
+      <header>CSS Documentation</header>
+      <ul>
+        <li><a class="nav-link" href="#What_is_CSS?">What is CSS?</a></li>
+        <li><a class="nav-link" href="#How_does_CSS_work?">How does CSS work?</a></li>
+        <li><a class="nav-link" href="#Adding_CSS_to_a_document">Adding CSS to a document</a></li>
+        <li><a class="nav-link" href="#Conflicting_rules">Conflicting rules</a></li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main-doc">
+    <section class="main-section" id="What_is_CSS?">
+      <header>What is CSS?</header>
+      <article>
+        <p>Like HTML, CSS is not really a programming language. It is not a markup language either — it is a style sheet language. This means that it lets you apply styles selectively to elements in HTML documents. For example, to select all the paragraph
+          elements on an HTML page and turn the text within them red, you'd write this CSS:</p>
+        <pre>
+                    <code>p {
+                    color: red;
+                  }
+                    </code>
+                </pre>
+        <p>The whole structure is called a rule set (but often "rule" for short). Note also the names of the individual parts:</p>
+        <ul>
+          <li><span class="definition">Selector</span> - the HTML element name at the start of the rule set.
+          </li>
+          <li><span class="definition">Declaration</span> - a single rule like <code class="inline-code">color: red;</code> specifying which of the element's properties you want to style.</li>
+          <li><span class="definition">Properties</span> - ways in which you can style a given HTML element.
+          </li>
+          <li><span class="definition">Property value</span> - to the right of the property after the colon, we have the property value, which chooses one out of many possible appearances for a given property (there are many <code class="inline-code">color</code>            values besides <code class="inline-code">red</code>).</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="How_does_CSS_work?">
+      <header>How does CSS work?</header>
+      <article>
+        <p>When a browser displays a document, it must combine the document's content with its style information. It processes the document in a number of stages, which we've listed below. Bear in mind that this is a very simplified version of what happens
+          when a browser loads a webpage, and that different browsers will handle the process in different ways. But this is roughly what happens.</p>
+        <ol>
+          <li>The browser loads the HTML (e.g. receives it from the network).</li>
+          <li>It converts the HTML into a DOM (Document Object Model). The DOM represents the document in the computer's memory.</li>
+          <li>The browser then fetches most of the resources that are linked to by the HTML document, such as embedded images and videos ... and linked CSS! JavaScript is handled a bit later on in the process, and we won't talk about it here to keep things
+            simpler.</li>
+          <li>The browser parses the fetched CSS, and sorts the different rules by their selector types into different "buckets", e.g. element, class, ID, and so on. Based on the selectors it finds, it works out which rules should be applied to which nodes
+            in the DOM, and attaches style to them as required (this intermediate step is called a render tree).</li>
+          <li>The render tree is laid out in the structure it should appear in after the rules have been applied to it.</li>
+          <li>The visual display of the page is shown on the screen (this stage is called painting).</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="main-section" id="Adding_CSS_to_a_document">
+      <header>Adding CSS to a document</header>
+      <article>
+        <p>The very first thing we need to do is to tell the HTML document that we have some CSS rules we want it to use. There are three different ways to apply CSS to an HTML document that you'll commonly come across, however, for now, we will look at
+          the most usual and useful way of doing so — linking CSS from the head of your document.</p>
+        <p>Create a file in the same folder as your HTML document and save it as <code class="inline-code">styles.css</code>. The <code class="inline-code">.css</code> extension shows that this is a CSS file.</p>
+        <p>To link <code class="inline-code">styles.css</code> to <code class="inline-code">index.html</code> add the following line somewhere inside the <code class="inline-code">&lthead&gt</code> of the HTML document:
+        </p>
+        <pre><code>&ltlink rel="stylesheet" href="styles.css"&gt</code></pre>
+        <p>This &ltlink&gt element tells the browser that we have a stylesheet, using the <code class="inline-code">rel</code> attribute, and the location of that stylesheet as the value of the <code class="inline-code">href</code> attribute. You can test
+          that the CSS works by adding a rule to <code class="inline-code">styles.css</code>.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Conflicting_rules">
+      <header>Conflicting rules</header>
+      <article>
+        <p>CSS stands for Cascading Style Sheets, and that first word <em>cascading</em> is incredibly important to understand — the way that the cascade behaves is key to understanding CSS.</p>
+        <p>At some point, you will be working on a project and you will find that the CSS you thought should be applied to an element is not working. Usually the problem is that you have created two rules which could potentially apply to the same element.
+          The <strong>cascade</strong>, and the closely-related concept of
+          <strong>specificity</strong>, are mechanisms that control which rule applies when there is such a conflict. Which rule is styling your element may not be the one you expect, so you need to understand how these mechanisms work.</p>
+        <p>Stylesheets cascade — at a very simple level this means that the order of CSS rules matter; when two rules apply that have equal specificity the one that comes last in the CSS is the one that will be used.</p>
+        <p><strong>Specificity</strong> is how the browser decides which rule applies if multiple rules have different selectors, but could still apply to the same element. It is basically a measure of how specific a selector's selection will be:</p>
+        <ul>
+          <li>An element selector is less specific — it will select all elements of that type that appear on a page — so will get a lower score.</li>
+          <li>A class selector is more specific — it will select only the elements on a page that have a specific class attribute value — so will get a higher score.</li>
+        </ul>
+        <p><strong>Inheritance</strong> also needs to be understood in this context — some CSS property values set on parent elements are inherited by their child elements, and some aren't.</p>
+        <p>For example, if you set a <code class="inline-code">color</code> and <code class="inline-code">font-family</code> on an element, every element inside it will also be styled with that color and font, unless you've applied different color and font
+          values directly to them.</p>
+        <p>Some properties do not inherit — for example if you set a <code class="inline-code">width</code> of 50% on an element, all of its descendants do not get a width of 50% of their parent's width. If this was the case, CSS would be very frustrating
+          to use!</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Reference">
+      <header>Reference</header>
+      <article>
+        <p>The information presented on this page is taken from <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS" target="_blank">MDN</a>.</p>
+      </article>
+    </section>
+
+  </main>
+</body>
+
+</html>
